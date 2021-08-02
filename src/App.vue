@@ -97,6 +97,7 @@ export default {
 </script>
 <style>
 @import './assets/style/reset.css';
+@import './assets/iconfont/iconfont.css';
 body{
   display: block;
   margin: 0px;
