@@ -87,6 +87,9 @@ video {
     font-weight: normal;
     vertical-align: baseline;
 }
+li{
+    list-style: none;
+}
 
 
 /*
@@ -144,6 +147,21 @@ Svg的动画样式配置
     fill: #fff;
 }
 
+.concise {
+    padding: 40px 32px;
+    border-radius: 20px;
+    margin-top: 10px;
+    /* box-shadow: 0 0px 25px 5px rgba(46, 58, 89, 0.1); */
+    box-sizing: border-box;
+    background-color: #fff;
+    transition: box-shadow .3s;
+}
+
+.concise:hover {
+    box-shadow: 0 0px 25px 5px rgba(46, 58, 89, 0.1);
+}
+
+
 /** 浏览器适配,不同浏览器使用不同的大小*/
 
 .container {
@@ -151,6 +169,7 @@ Svg的动画样式配置
     margin-right: auto;
     margin-left: auto;
 }
+
 
 @media (min-width: 576px) {
     .container {
