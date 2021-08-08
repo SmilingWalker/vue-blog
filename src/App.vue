@@ -11,16 +11,20 @@
         </keep-alive>
       </transition>
   </router-view>
+  <login></login>
 </template>
 <script>
 import NavBar from "./components/navbar/main.vue"
 import {watch,reactive} from "vue"
 import {useRoute} from "vue-router"
+import Login from './views/index/login.vue'
 export default {
   components:{
     NavBar,
+    Login,
   },
   setup(){
+    console.log(process.env);
     const route=useRoute()
     const nav =reactive( {
       normal: {
@@ -57,11 +61,11 @@ export default {
             link:"/project",
             key:"project",
         },
-        {
-          title:"日记",
-          link:"/dairy",
-          key:"dairy"
-        },
+          {
+            title: "音乐圈",
+            link: "/player",
+            key: "music",
+          },
       ]
     },
     {
@@ -70,6 +74,58 @@ export default {
       key:"message"
     }];
 
+
+
+
+    /** 静态的音乐模块 */
+    /*
+      store.dispatch("getMusicList");
+     const getMusic = (current) => {
+      const item = ByMusic.list[current];
+     
+      console.log(item)
+      if (item.music_id && item.cover.length == 0) {
+        var formData = new FormData();
+        formData.append("input", item.music_id);
+        formData.append("filter", "id");
+        formData.append("type", item.type);
+        formData.append("page", 1);
+        http.post("/music", formData).then(function (res) {
+          res.data[0].url = res.data[0].url.replace(/^http:\/\//i, "https://");
+          res.data[0].pic = res.data[0].pic.replace(/^http:\/\//i, "https://");
+          ByMusic.list[current].url = res.data[0].url;
+          ByMusic.list[current].lrc = res.data[0].lrc;
+          ByMusic.list[current].cover = res.data[0].pic;
+          ByMusic.jump(current);
+        });
+      }
+    };
+    watch(
+      () => store.state.index.musicList,
+      (list) => {
+        console.log(list);
+        if(list.length==0)return
+        let data = [];
+        list.map((value) => {
+          data.push({
+            name: value.title,
+            artist: value.name,
+            url: "",
+            lrc: "",
+            cover: "",
+            music_id: value.music_id,
+            type: value.type,
+          });
+        });
+        ByMusic.addMusic(data);
+        getMusic(ByMusic.current);
+        ByMusic.$watch("current", (current) => {
+          getMusic(current);
+        });
+        ByMusic.showMode("fixed", true);
+      }
+    );
+    */
     watch(
       ()=>route.name,
       (name)=>{

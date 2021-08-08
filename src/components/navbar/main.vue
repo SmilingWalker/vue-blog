@@ -57,10 +57,17 @@
       </ul>
     </transition>
     <div class="nav-footer">
-      <el-dropdown class="user">
-        <el-avatar :size="50" src="https://bit-images.bj.bcebos.com/bit-new/file/20210323/4inn.png" fit="fill">
-          User
+      <el-dropdown class="user" @command="handleCommand">
+        <el-avatar style="margin-top:11px"  :size="50" src="https://bit-images.bj.bcebos.com/bit-new/file/20210323/4inn.png" fit="fill">
         </el-avatar>
+        <template #dropdown>
+        <el-dropdown-menu  class="loginDrop">
+          <el-dropdown-item command="login">
+            <span >登录</span>
+          </el-dropdown-item>
+        </el-dropdown-menu>
+      
+        </template>
       </el-dropdown>
     </div>
   </nav>
@@ -69,6 +76,8 @@
 
 <script>
 import { ref } from "vue"
+import { useStore } from 'vuex'
+
 export default {
     name:"NavBar",
     props:{
@@ -106,26 +115,32 @@ export default {
         }
       }
     },
-    setup(props){
+    setup(){
       // 是否可见
       let visible = ref(false)
       //是否折叠
       let folding = ref(true)
       let arriveHeight = ref(false)
       let dropdown_hover = ref(false);
-      let a = props;
-      console.log(a);
+      const store = useStore()
 
 
       const dropdown_fun= ()=>{
         dropdown_hover.value = !dropdown_hover.value
       };
+
+      const handleCommand = (ctype)=>{
+        if(ctype=="login"){
+          store.commit("showLogDia");
+        }
+      }
       return{
         visible,
         folding,
         arriveHeight,
         dropdown_hover,
-        dropdown_fun
+        dropdown_fun,
+        handleCommand,
       }
     },
     methods:{
@@ -137,7 +152,7 @@ export default {
 }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .navbar{
   width:100%;
   height:72px;
@@ -235,7 +250,8 @@ export default {
 }
 
 /**drop down */
-.nav-section >>> .dropdownDiv{
+.nav-section ::v-deep .dropdownDiv{
+  display: inline;
   height: 100%;
 }
 
@@ -280,7 +296,7 @@ export default {
   background-size:cover;
   background-image: url("../../assets/image/bgp_project.jpg") ;
 }
-.dairy{
+.music{
   background-size:cover;
   background-image: url("../../assets/image/bgp_dairy.jpg") ;
 }
@@ -305,6 +321,17 @@ export default {
 
 .nav-footer >>> .user{
   margin-right: 20px;
+}
+
+
+.loginDrop{
+  box-sizing: border-box;
+  margin: 0 10px;
+  padding: 0;
+  padding: 10px 5px;
+  span {
+    padding: 0px 20px;
+  }
 }
 
 /** 用来取消router-link的样式 */

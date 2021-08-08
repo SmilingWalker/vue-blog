@@ -60,6 +60,7 @@
       </template>
 
       </Introduction>
+      <Footer></Footer>
   </div>
   
 </template>
@@ -72,15 +73,17 @@ import bcg2 from "@/assets/image/bcg2.jpg"
 import bcg3 from "@/assets/image/bcg3.jpg"
 import bcg4 from "@/assets/image/bcg4.jpg"
 
-import Introduction from '../components/home/introduction.vue'
+import Introduction from '../../components/home/introduction.vue'
+import Footer from './footer.vue'
 
 export default {
   name: 'Home',
   components: {
-    Introduction
-    
+    Introduction,
+    Footer  
   },
-  setup(){
+
+    setup(){
     const bcgList = [bcg1,bcg2,bcg3,bcg4];
     let bcgNow = ref("")
     const info=[

@@ -1,5 +1,5 @@
 const message = {
-    stats:{
+    state:{
 
     },
     mutations:{

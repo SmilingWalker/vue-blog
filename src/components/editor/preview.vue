@@ -234,7 +234,6 @@ export default {
     };
     const reSize = () => {
       const width = document.body.clientWidth;
-      console.log(width);
       if (width < props.width) {
         tocIsShow.value = false;
         autoShow.value = false;
