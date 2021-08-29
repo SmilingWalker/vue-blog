@@ -3,23 +3,31 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build",
+    "serve_home": "vue-cli-service serve --home",
+    "build_home": "vue-cli-service build --home",
+    "serve_admin": "vue-cli-service serve --admin",
+    "build_admin": "vue-cli-service build --admin ",
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
+    "@kangc/v-md-editor": "^2.3.8",
     "axios": "^0.21.1",
     "babel-loader": "^8.2.2",
     "core-js": "^3.6.5",
     "dompurify": "^2.3.0",
+    "echarts": "^5.1.2",
     "element-plus": "^1.0.2-beta.59",
+    "jwt-decode": "^3.1.2",
     "marked": "^2.1.3",
     "ol": "^6.6.1",
+    "path": "^0.12.7",
+    "randomcolor": "^0.6.2",
     "throttle-debounce": "^3.0.1",
     "vue": "^3.0.0",
     "vue-infinite-scroll": "^2.0.2",
     "vue-router": "^4.0.0-0",
-    "vuex": "^4.0.0-0"
+    "vuex": "^4.0.0-0",
+    "vuex-persistedstate": "^4.0.0"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "~4.5.0",
