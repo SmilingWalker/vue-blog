@@ -2,7 +2,7 @@ import axios from "@/utils/requestHome"
 import qs from "qs"
 
 const user = {
-    AdminLogin(formdata){
+    Login(formdata){
         return axios.post(
             "/users/login"
             ,qs.stringify(formdata)

@@ -28,7 +28,7 @@
 
       <el-submenu v-for="(item,index) of homeList" :key="item.id" :index="item.id">
         <template #title>
-          <i class="icon" :class="item.icon"></i>
+          <i class="icon" style="margin-right:5px" :class="item.icon"></i>
           <span>{{ item.name }}</span>
         </template>
         <el-menu-item
@@ -137,37 +137,24 @@ export default {
         },
         {
           id: "3",
-          name: "友情链接",
-          icon: "el-icon-link",
+          name: "每日一句",
+          icon: "el-icon-notebook-1",
           children: [
             {
               id: "3-1",
               icon: "el-icon-edit-outline",
-              name: "友链列表",
-              url: "/home/link/list",
-            },
+              name: "句子列表",
+              url: "/home/sentence/list",
+            },         
           ],
         },
         {
           id: "4",
-          name: "成长路线",
-          icon: "el-icon-location-outline",
-          children: [
-            {
-              id: "4-1",
-              icon: "el-icon-edit-outline",
-              name: "路线列表",
-              url: "/home/route/list",
-            },
-          ],
-        },
-        {
-          id: "5",
           name: "留言管理",
           icon: "el-icon-chat-dot-round",
           children: [
             {
-              id: "5-1",
+              id: "4-1",
               icon: "el-icon-edit-outline",
               name: "留言列表",
               url: "/home/message/list",
@@ -175,24 +162,24 @@ export default {
           ],
         },
         {
-          id: "6",
+          id: "5",
           name: "网站管理",
           icon: "el-icon-setting",
           children: [
             {
-              id: "6-1",
+              id: "5-1",
               icon: "el-icon-edit-outline",
               name: "网站公告",
               url: "/home/sysmess/list",
             },
             {
-              id: "6-2",
+              id: "5-2",
               icon: "el-icon-edit-outline",
               name: "主页轮播",
               url: "/home/show/list",
             },
             {
-              id: "6-3",
+              id: "5-3",
               icon: "el-icon-edit-outline",
               name: "音乐列表",
               url: "/home/music/list",

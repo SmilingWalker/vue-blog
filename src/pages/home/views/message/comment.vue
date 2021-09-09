@@ -40,6 +40,7 @@
 
 import {computed,ref} from 'vue';
 import { useStore } from "vuex"
+import {ElMessage} from "element-plus";
 import Preview from '@/components/editor/preview.vue';
 import emoji from "./emoji.json"
 export default {
@@ -59,13 +60,21 @@ export default {
             defalut:300
         }
     },
-    setup(props){
+    setup(props,context){
         const store = useStore();
         let content = ref("");
         let preview = ref(true);
         let emojiShow = ref(false);
         const editor = ref(null);
         const state = ref(false)
+        //判断当前是否登录
+        const isLogin=computed(()=>{
+            const token=store.state.user.token
+            if(token){
+                return true
+            }
+            return false
+        })
         const changeState = ()=>{
             state.value = !state.value
         }
@@ -77,7 +86,21 @@ export default {
                 }
                 return props.url
         })
-
+        //   提交
+        const submit=()=>{
+            const len=content.value.length
+            if(len==0||len>props.length){
+                ElMessage.warning('内容不能为空！');
+                return
+            }
+            if(!isLogin.value){
+                ElMessage.warning('未登录,请登录后提交！');
+                store.commit('showLogin')
+                return
+            }
+            context.emit('submit',content.value)
+            content.value=""
+        }
         let clickShow = (show=false)=>{
             //修改预览状态
             if(show){
@@ -121,7 +144,8 @@ export default {
             editor,
 
             changeState,
-            state
+            state,
+            submit
         }
     },
 

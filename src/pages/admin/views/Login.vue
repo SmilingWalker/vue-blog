@@ -42,9 +42,19 @@ export default {
     const store = useStore();
     // 如果当前已经登录，直接跳转到index页面
     if (store.state.user.token!="") {
-      store.commit("userInfo",jwt_decode(store.state.user.token))
-      router.push("/home/index");
-      console.log(store.state.user);
+      //验证Token 是否过期
+      user.VerifyToken(store.state.user.token).then((result) => {
+        if(result.success){
+          store.commit("userInfo",jwt_decode(store.state.user.token))
+          store.commit("setValid",true);
+          router.push("/home/index");
+        }else{
+          ElMessage.info(result.message);
+        }
+      }).catch((err) => {
+        ElMessage.error(err)
+      });
+
     }
     /**
      * data部分
@@ -98,14 +108,7 @@ export default {
       }
     };
     const login = (formdata)=>{
-      // let that = this;
-      //     that.$store.dispatch("setToken", "response.data.token");
-      //     that.$message({
-      //       message: "登录成功",
-      //       type: "success",
-      //     });
-      //     that.$store.dispatch("userInfo");
-      //     that.$router.push("/home/index");
+
           user.AdminLogin(formdata).then((response)=>{
             /**
              * 将 token写入内存
@@ -118,8 +121,10 @@ export default {
               duration: 1000,
             })
             store.dispatch("userInfo",response.data.user)
+            store.commit("setValid",true);
             //跳转到主页面
             router.push("/home/index")
+            console.log(store.state.user);
           })
       };
       return {

@@ -93,8 +93,8 @@ export default {
         type:Array,
       },
       title: {
-      type: String,
-      default: "晴空",
+        type: String,
+        default: "晴空",
       },
       sectionPosition:{
         type:String,
@@ -197,14 +197,14 @@ export default {
   text-indent: -9999px;
 }
 .nav-title{
-  font-size: 16px;
-  line-height: 16px;
+  font-size: 20px;
+  line-height: 20px;
   align-content: center;
   border-left: 1px solid #ccc;
   padding-left: 15px;
   margin-left: 15px;
   font-style: normal;
-  font-weight: 400;
+  font-weight: 600;
   color: #71daff;
 }
 
@@ -235,11 +235,11 @@ export default {
   align-items: center;
   height: 100%;
   position: relative;
-  padding-left:4px ;
-  padding-right:4px ;
+  padding-left:10px ;
+  padding-right:10px ;
   color: #aaa;
-  font-size: 16px;
-  font-weight: 400;
+  font-size: 20px;
+  font-weight: 600;
 }
 .nav-section :hover{
   color: #1b9aee;

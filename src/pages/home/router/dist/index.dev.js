@@ -78,6 +78,19 @@ var routes = [{
       return _interopRequireWildcard(require("../views/index/sign.vue"));
     });
   }
+}, {
+  path: '/blog/:id',
+  name: 'Content',
+  component: function component() {
+    return Promise.resolve().then(function () {
+      return _interopRequireWildcard(require('../views/blog/content.vue'));
+    });
+  },
+  meta: {
+    title: 'loading……',
+    keepAlive: true // 需要被缓存
+
+  }
 }];
 var router = (0, _vueRouter.createRouter)({
   history: (0, _vueRouter.createWebHashHistory)(),

@@ -12,7 +12,7 @@ var _qs = _interopRequireDefault(require("qs"));
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
 var user = {
-  AdminLogin: function AdminLogin(formdata) {
+  Login: function Login(formdata) {
     return _requestHome["default"].post("/users/login", _qs["default"].stringify(formdata));
   },
   QueryUsersByPage: function QueryUsersByPage(page) {

@@ -62,6 +62,7 @@
 import { ElNotification } from 'element-plus';
 import { useStore } from 'vuex';
 import {reactive,ref, unref} from "vue"
+import user from "../../../../api/home/user"
 export default {
 	setup(){
     const formCustomRef = ref(null);
@@ -111,20 +112,19 @@ export default {
       let form = unref(formCustomRef)
       if(!form)return
       try{
-        // 进行数据验证,validate内部书写验证逻辑，这时不再报错，也不会执行catch块
-        // await form.validate((valid)=>{
-        //   if(valid){
-        //     console.log(form);
-        //     const {name,password} = form.model;
-        //     console.log(name,password); 
-        //   }else{
-        //     console.log("验证失败");
-        //   }
-        // })
         await form.validate();
-        console.log(form);
-        const {name,password} = form.model;
-        console.log(name,password); 
+        user.Login(form.model).then((result) => {
+          console.log(result);
+          store.commit("setUserInfo",result.data.user);
+          store.commit("setToken",result.data.token)
+        }).catch((err) => {
+          console.log("ADW");
+          console.log(err);
+          ElNotification.warning({
+            title:"信息错误",
+            message:"账户名或密码不符规范"
+          })
+        }); 
       }catch(error){
         ElNotification.warning({
           title:"信息错误",

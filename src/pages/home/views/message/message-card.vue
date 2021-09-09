@@ -11,7 +11,7 @@
 
                <!-- TODO(frank):需要后端数据处理，暂时不清楚具体结构 -->
           </div>
-            <Comment  v-if="commentID == 'message' + item.id && commentShow" :length="300">
+            <Comment  v-if="commentID == 'message' + item.id && commentShow" @submit="reply($event,item.id)" :length="300">
             </Comment> 
       </template>
       
@@ -47,7 +47,7 @@
                         v-if="(user.id == item.user_id && item.id>0)|| user.is_admin == 1"
                         @click="deleteMessage('message',item.id)"></span>
                     <!-- TODO(frank):需要后端数据处理，暂时不清楚具体结构 -->
-                        <Comment  v-if="commentID == 'message' + item.id && commentShow" @submit="reply" :length="300">
+                        <Comment  v-if="commentID == 'message' + item.id && commentShow" @submit="reply($event,item.id)" :length="300">
 
                         </Comment> 
                     </div>

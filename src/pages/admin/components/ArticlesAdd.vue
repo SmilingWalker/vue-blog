@@ -41,26 +41,6 @@
       </el-row>
 
       <el-row>
-        <!-- <el-col :md="12" :sm="24">
-          <el-form-item label="文章类别" prop="classty">
-            <el-select
-              style="width: 100%"
-              v-model="form.classty"
-              filterable
-              allow-create
-              default-first-option
-              placeholder="请选择文章类别"
-            >
-              <el-option
-                v-for="item in classtyList"
-                :key="item.classty"
-                :label="item.classty"
-                :value="item.classty"
-              >
-              </el-option>
-            </el-select>
-          </el-form-item>
-        </el-col> -->
         <el-col :md="12" :sm="24">
           <el-form-item label="文章标签" prop="label">
             <!-- <el-input v-model="form.label" placeholder="多个标签使用逗号分隔"></el-input> -->
@@ -272,6 +252,7 @@ export default {
       }
     );
     
+    
 
     /**
      * method
@@ -300,7 +281,6 @@ export default {
     const onSubmit = async ()=>{
       // 为表单绑定验证功能
       let form = unref(formRef)
-      console.log(form);
       if(!form)return
       try{
         await form.validate();

@@ -1,5 +1,5 @@
 <template>
-  <NavBar title="晴空万里" logo="@/assets/image/qin.png" :section="section" :style="nav">
+  <NavBar title="甘  生" logo="@/assets/image/qin.png" :section="section" :style="nav">
       <template #logo>
         <!-- 这里可对原始默认的span 标签进行替换 -->
       </template>
@@ -45,17 +45,17 @@ export default {
       key:"home"
     },
     {
-      title:"博客圈",
+      title:"博客",
       link:"/blog",
       key:"blog"
     },
     {
-      title:"友链圈",
+      title:"友链",
       link:"/moments",
       key:"moments"
     },
     {
-      title:"个人圈",
+      title:"个人",
       link:"/personal",
       key:"personal",
       children:[
@@ -65,7 +65,7 @@ export default {
             key:"project",
         },
           {
-            title: "音乐圈",
+            title: "音乐",
             link: "/player",
             key: "music",
           },
@@ -162,7 +162,6 @@ body{
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
   color: #2c3e50;
 }
 
